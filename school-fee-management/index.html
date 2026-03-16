@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TuitionFlow – School Fee Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon">🎓</div>
+            <div>
+                <div class="logo-title">Tuition Flow</div>
+                <div class="logo-sub">Fee Management</div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <span class="nav-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="students">
+                <span class="nav-icon">👨‍🎓</span>
+                <span>Students</span>
+            </a>
+            <a href="#" class="nav-item" data-page="payments">
+                <span class="nav-icon">💳</span>
+                <span>Payments</span>
+            </a>
+            <a href="#" class="nav-item" data-page="terms">
+                <span class="nav-icon">📅</span>
+                <span>Terms & Charges</span>
+            </a>
+            <a href="#" class="nav-item" data-page="reminders">
+                <span class="nav-icon">📲</span>
+                <span>WhatsApp Reminders</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="school-name" id="school-display-name">EduPay School</div>
+            <div class="school-year">Academic Year 2025/2026</div>
+            <button id="logout-btn"
+                style="margin-top:10px;width:100%;padding:8px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:8px;color:#f87171;cursor:pointer;font-size:13px;">🚪
+                Logout</button>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main-wrapper">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger" id="hamburger">☰</button>
+                <div class="page-title" id="page-title">Dashboard</div>
+            </div>
+            <div class="topbar-right">
+                <div class="term-badge">Term 1 &bull; 2025/2026</div>
+                <div class="avatar">A</div>
+            </div>
+        </header>
+
+        <!-- PAGES -->
+        <main class="content">
+
+            <!-- =========== DASHBOARD PAGE =========== -->
+            <section class="page active" id="page-dashboard">
+                <div class="section-header">
+                    <h2>Overview</h2>
+                    <p>Welcome back, Admin. Here's a snapshot of this term.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card blue">
+                        <div class="stat-icon">👨‍🎓</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="stat-students">48</div>
+                            <div class="stat-label">Total Students</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card green">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="stat-revenue">₦ 144,000</div>
+                            <div class="stat-label">Expected Revenue</div>
+                        </div>
+
+                    </div>
+                    <div class="stat-card green">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="stat-collected">₦ 576,000</div>
+                            <div class="stat-label">Fees Collected</div>
+                        </div>
+
+                    </div>
+                    <div class="stat-card red">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="stat-outstanding">₦ 144,000</div>
+                            <div class="stat-label">Outstanding Balance</div>
+                        </div>
+
+                    </div>
+                    <div class="stat-card purple">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="stat-paid">75%</div>
+                            <div class="stat-label">Collection Rate</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Collection Progress -->
+                <div class="card mt-24">
+                    <div class="card-header">
+                        <h3>Term Collection Progress</h3>
+                        <span class="badge badge-blue">Term 1</span>
+                    </div>
+                    <div class="progress-list">
+                        <div class="progress-item" data-class="JSS 1">
+                            <div class="progress-meta">
+                                <span>JSS 1</span><span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width:80%; background:var(--green)"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item" data-class="JSS 2">
+                            <div class="progress-meta">
+                                <span>JSS 2</span><span>65%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width:65%; background:var(--blue)"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item" data-class="JSS 3">
+                            <div class="progress-meta">
+                                <span>JSS 3</span><span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width:90%; background:var(--purple)"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item" data-class="SSS 1">
+                            <div class="progress-meta">
+                                <span>SSS 1</span><span>55%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width:55%; background:var(--orange)"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item" data-class="SSS 2">
+                            <div class="progress-meta">
+                                <span>SSS 2</span><span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width:70%; background:var(--blue)"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item" data-class="SSS 3">
+                            <div class="progress-meta">
+                                <span>SSS 3</span><span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width:85%; background:var(--green)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Payments -->
+                <div class="card mt-24">
+                    <div class="card-header">
+                        <h3>Recent Payments</h3>
+                        <button class="btn btn-sm btn-outline" data-page="payments">View All</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Class</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-payments-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========== STUDENTS PAGE =========== -->
+            <section class="page" id="page-students">
+                <div class="section-header">
+                    <h2>Students</h2>
+                    <p>Manage student records and fee status.</p>
+                </div>
+
+                <div class="toolbar">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="student-search" placeholder="Search by name or ID..." />
+                    </div>
+                    <div class="filter-group">
+                        <select id="class-filter" class="select-input">
+                            <option value="">All Classes</option>
+                            <option>JSS 1</option>
+                            <option>JSS 2</option>
+                            <option>JSS 3</option>
+                            <option>SSS 1</option>
+                            <option>SSS 2</option>
+                            <option>SSS 3</option>
+                        </select>
+                        <select id="status-filter" class="select-input">
+                            <option value="">All Status</option>
+                            <option>Fully Paid</option>
+                            <option>Partial</option>
+                            <option>Unpaid</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="add-student-btn">+ Add Student</button>
+                </div>
+
+                <div class="card mt-16">
+                    <div class="table-wrapper">
+                        <table class="data-table" id="students-table">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Class</th>
+                                    <th>Parent Phone</th>
+                                    <th>Term Fee</th>
+                                    <th>Paid</th>
+                                    <th>Balance</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========== PAYMENTS PAGE =========== -->
+            <section class="page" id="page-payments">
+                <div class="section-header">
+                    <h2>Payment Tracking</h2>
+                    <p>Record and view all payment transactions.</p>
+                </div>
+
+                <div class="toolbar">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="payment-search" placeholder="Search payments..." />
+                    </div>
+                    <div class="filter-group">
+                        <select id="term-payment-filter" class="select-input">
+                            <option>Term 1</option>
+                            <option>Term 2</option>
+                            <option>Term 3</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="record-payment-btn">+ Record Payment</button>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="mini-stats mt-16">
+                    <div class="mini-card">
+                        <div class="mini-label">Total Transactions</div>
+                        <div class="mini-value" id="pay-total-tx">36</div>
+                    </div>
+                    <div class="mini-card">
+                        <div class="mini-label">Total Collected</div>
+                        <div class="mini-value green-text" id="pay-total-collected">₦576,000</div>
+                    </div>
+                    <div class="mini-card">
+                        <div class="mini-label">This Week</div>
+                        <div class="mini-value blue-text" id="pay-week">₦48,000</div>
+                    </div>
+                    <div class="mini-card">
+                        <div class="mini-label">Pending Balance</div>
+                        <div class="mini-value red-text" id="pay-pending">₦144,000</div>
+                    </div>
+                </div>
+
+                <div class="card mt-16">
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Ref #</th>
+                                    <th>Student</th>
+                                    <th>Class</th>
+                                    <th>Amount Paid</th>
+                                    <th>Term Fee</th>
+                                    <th>Balance</th>
+                                    <th>Date</th>
+                                    <th>Method</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="payments-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========== TERMS PAGE =========== -->
+            <section class="page" id="page-terms">
+                <div class="section-header">
+                    <h2>Terms & Charges</h2>
+                    <p>Configure fee structure per class per term.</p>
+                </div>
+
+                <div class="terms-grid">
+                    <!-- Active Term Card -->
+                    <div class="card term-card">
+                        <div class="card-header">
+                            <h3>Active Term</h3>
+                            <span class="badge badge-green">Current</span>
+                        </div>
+                        <div class="term-detail">
+                            <div class="term-row"><span>Term</span><strong>Term 1</strong></div>
+                            <div class="term-row"><span>Session</span><strong>2025/2026</strong></div>
+                            <div class="term-row"><span>Start Date</span><strong>Jan 13, 2025</strong></div>
+                            <div class="term-row"><span>End Date</span><strong>Apr 4, 2025</strong></div>
+                        </div>
+                        <button class="btn btn-outline mt-16" id="edit-term-btn">Edit Term</button>
+                    </div>
+
+                    <!-- Fee Structure -->
+                    <div class="card fee-structure-card">
+                        <div class="card-header">
+                            <h3>Fee Structure</h3>
+                            <button class="btn btn-sm btn-primary" id="add-fee-btn">+ Add</button>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="data-table" id="fee-table">
+                                <thead>
+                                    <tr>
+                                        <th>Class</th>
+                                        <th>Term Fee (₦)</th>
+                                        <th>Other Charges (₦)</th>
+                                        <th>Total (₦)</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fee-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Terms -->
+                <div class="card mt-24">
+                    <div class="card-header">
+                        <h3>Past Terms</h3>
+                    </div>
+                    <div class="terms-list" id="past-terms-list">
+                        <div class="term-history-item">
+                            <div class="th-info">
+                                <div class="th-name">Term 3 &bull; 2024/2025</div>
+                                <div class="th-dates">Sep 1 – Dec 15, 2024</div>
+                            </div>
+                            <div class="th-stat"><span class="badge badge-green">Closed</span></div>
+                            <div class="th-collected">₦ 580,000 collected</div>
+                        </div>
+                        <div class="term-history-item">
+                            <div class="th-info">
+                                <div class="th-name">Term 2 &bull; 2024/2025</div>
+                                <div class="th-dates">May 6 – Aug 16, 2024</div>
+                            </div>
+                            <div class="th-stat"><span class="badge badge-green">Closed</span></div>
+                            <div class="th-collected">₦ 554,000 collected</div>
+                        </div>
+                        <div class="term-history-item">
+                            <div class="th-info">
+                                <div class="th-name">Term 1 &bull; 2024/2025</div>
+                                <div class="th-dates">Jan 15 – Apr 5, 2024</div>
+                            </div>
+                            <div class="th-stat"><span class="badge badge-green">Closed</span></div>
+                            <div class="th-collected">₦ 510,000 collected</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========== REMINDERS PAGE =========== -->
+            <section class="page" id="page-reminders">
+                <div class="section-header">
+                    <h2>WhatsApp Reminders</h2>
+                    <p>Send automated payment reminders to parents via WhatsApp.</p>
+                </div>
+
+                <!-- Template -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Message Template</h3>
+                        <span class="badge badge-green">WhatsApp Ready</span>
+                    </div>
+                    <div class="template-editor">
+                        <textarea id="reminder-template" rows="6">Dear Parent/Guardian of {studentName},
+
+This is a reminder that the Term 1 school fee of ₦{termFee} for your ward in {className} is due.
+
+Amount Paid: ₦{amountPaid}
+Outstanding Balance: ₦{balance}
+
+Kindly make payment at the school bursary or via bank transfer.
+
+Thank you,
+Greenfield Academy Management</textarea>
+                        <div class="template-tags">
+                            <span class="tag">{studentName}</span>
+                            <span class="tag">{className}</span>
+                            <span class="tag">{termFee}</span>
+                            <span class="tag">{amountPaid}</span>
+                            <span class="tag">{balance}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Students with Outstanding Balance -->
+                <div class="card mt-24">
+                    <div class="card-header">
+                        <h3>Students with Outstanding Balance</h3>
+                        <div class="header-actions">
+                            <button class="btn btn-sm btn-outline" id="select-all-btn">Select All</button>
+                            <button class="btn btn-sm btn-whatsapp" id="send-selected-btn">
+                                <span>📲</span> Send to Selected
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="check-all" /></th>
+                                    <th>Student</th>
+                                    <th>Class</th>
+                                    <th>Parent Phone</th>
+                                    <th>Balance</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reminders-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Reminder Log -->
+                <div class="card mt-24">
+                    <div class="card-header">
+                        <h3>Reminder Log</h3>
+                    </div>
+                    <div class="reminder-log" id="reminder-log">
+                        <div class="log-item">
+                            <span class="log-icon">📲</span>
+                            <div class="log-info">
+                                <strong>Reminder sent to 5 parents</strong>
+                                <span>Feb 20, 2025 · 09:15 AM</span>
+                            </div>
+                            <span class="badge badge-green">Delivered</span>
+                        </div>
+                        <div class="log-item">
+                            <span class="log-icon">📲</span>
+                            <div class="log-info">
+                                <strong>Reminder sent to 8 parents</strong>
+                                <span>Feb 14, 2025 · 02:30 PM</span>
+                            </div>
+                            <span class="badge badge-green">Delivered</span>
+                        </div>
+                        <div class="log-item">
+                            <span class="log-icon">📲</span>
+                            <div class="log-info">
+                                <strong>Reminder sent to 12 parents</strong>
+                                <span>Feb 7, 2025 · 10:00 AM</span>
+                            </div>
+                            <span class="badge badge-green">Delivered</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- =========== MODALS =========== -->
+
+    <!-- Add Student Modal -->
+    <div class="modal-overlay" id="add-student-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add New Student</h3>
+                <button class="modal-close" data-modal="add-student-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" id="s-firstname" placeholder="e.g. Chukwuemeka" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" id="s-lastname" placeholder="e.g. Okafor" class="form-input" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Class</label>
+                        <select id="s-class" class="form-input">
+                            <option>JSS 1</option>
+                            <option>JSS 2</option>
+                            <option>JSS 3</option>
+                            <option>SSS 1</option>
+                            <option>SSS 2</option>
+                            <option>SSS 3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Parent Phone (WhatsApp)</label>
+                        <input type="tel" id="s-phone" placeholder="e.g. 08012345678" class="form-input" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Parent Name</label>
+                        <input type="text" id="s-parent" placeholder="e.g. Mr. Okafor" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Admission</label>
+                        <input type="date" id="s-date" class="form-input" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" data-modal="add-student-modal">Cancel</button>
+                <button class="btn btn-primary" id="save-student-btn">Save Student</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Record Payment Modal -->
+    <div class="modal-overlay" id="record-payment-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Record Payment</h3>
+                <button class="modal-close" data-modal="record-payment-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label>Select Student</label>
+                        <select id="p-student" class="form-input" onchange="onStudentSelectForPayment()">
+                            <option value="">-- Select Student --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="payment-summary-box" id="payment-summary">
+                    <div class="ps-row"><span>Term Fee</span><strong id="ps-fee">₦ --</strong></div>
+                    <div class="ps-row"><span>Already Paid</span><strong id="ps-paid" class="green-text">₦ --</strong>
+                    </div>
+                    <div class="ps-row highlight"><span>Outstanding Balance</span><strong id="ps-balance"
+                            class="red-text">₦ --</strong></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Amount Paying (₦)</label>
+                        <input type="number" id="p-amount" placeholder="e.g. 15000" class="form-input"
+                            oninput="computeNewBalance()" />
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <select id="p-method" class="form-input">
+                            <option>Cash</option>
+                            <option>Bank Transfer</option>
+                            <option>POS</option>
+                            <option>Cheque</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Payment Date</label>
+                        <input type="date" id="p-date" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label>New Balance After Payment</label>
+                        <input type="text" id="p-new-balance" class="form-input" readonly
+                            style="background:var(--bg-secondary)" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" data-modal="record-payment-modal">Cancel</button>
+                <button class="btn btn-primary" id="save-payment-btn">Record Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit/Add Fee Modal -->
+    <div class="modal-overlay" id="add-fee-modal">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h3>Set Fee for Class</h3>
+                <button class="modal-close" data-modal="add-fee-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Class</label>
+                    <select id="f-class" class="form-input">
+                        <option>JSS 1</option>
+                        <option>JSS 2</option>
+                        <option>JSS 3</option>
+                        <option>SSS 1</option>
+                        <option>SSS 2</option>
+                        <option>SSS 3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Term Fee (₦)</label>
+                    <input type="number" id="f-fee" class="form-input" placeholder="e.g. 30000" />
+                </div>
+                <div class="form-group">
+                    <label>Other Charges (₦)</label>
+                    <input type="number" id="f-other" class="form-input" placeholder="e.g. 5000" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" data-modal="add-fee-modal">Cancel</button>
+                <button class="btn btn-primary" id="save-fee-btn">Save Fee</button>
+            </div>
+        </div>
+    </div>
+    <!-- Edit / Create Term Modal -->
+    <div class="modal-overlay" id="edit-term-modal">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h3>✏️ Edit Active Term</h3>
+                <button class="modal-close" data-modal="edit-term-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Term Name</label>
+                        <select id="t-name" class="form-input">
+                            <option value="TERM_1">Term 1</option>
+                            <option value="TERM_2">Term 2</option>
+                            <option value="TERM_3">Term 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Academic Session</label>
+                        <input type="text" id="t-session" class="form-input" placeholder="e.g. 2025/2026">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" id="t-start" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date" id="t-end" class="form-input">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" data-modal="edit-term-modal">Cancel</button>
+                <button class="btn btn-primary" id="save-term-btn">💾 Save & Activate Term</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Details Modal -->
+    <div class="modal-overlay" id="student-details-modal">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h3 id="sd-title">Student Details</h3>
+                <button class="modal-close" data-modal="student-details-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="student-profile">
+                    <div class="student-avatar-lg" id="sd-avatar">C</div>
+                    <div class="student-profile-info">
+                        <h2 id="sd-name">--</h2>
+                        <p id="sd-class-id">--</p>
+                    </div>
+                </div>
+                <div class="detail-grid">
+                    <div class="detail-item"><label>Parent</label><span id="sd-parent">--</span></div>
+                    <div class="detail-item"><label>Phone</label><span id="sd-phone">--</span></div>
+                    <div class="detail-item"><label>Admission Date</label><span id="sd-date">--</span></div>
+                    <div class="detail-item"><label>Term Fee</label><span id="sd-fee">--</span></div>
+                </div>
+
+                <div class="balance-display">
+                    <div class="bd-item bd-fee">
+                        <div class="bd-label">Term Fee</div>
+                        <div class="bd-value" id="bd-fee">--</div>
+                    </div>
+                    <div class="bd-arrow">→</div>
+                    <div class="bd-item bd-paid">
+                        <div class="bd-label">Paid</div>
+                        <div class="bd-value" id="bd-paid">--</div>
+                    </div>
+                    <div class="bd-arrow">→</div>
+                    <div class="bd-item bd-balance">
+                        <div class="bd-label">Balance</div>
+                        <div class="bd-value" id="bd-balance">--</div>
+                    </div>
+                </div>
+
+                <h4 style="margin-top:20px;">Payment History</h4>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Ref</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sd-payment-history"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-whatsapp" id="sd-whatsapp-btn">📲 Send WhatsApp Reminder</button>
+                <button class="btn btn-primary" id="sd-record-btn">+ Record Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- =========== LOGIN OVERLAY =========== -->
+    <div id="login-overlay"
+        style="display:none;position:fixed;inset:0;background:rgba(10,10,20,0.85);backdrop-filter:blur(10px);z-index:9999;align-items:center;justify-content:center;">
+        <div
+            style="background:var(--bg-card,#1a1a2e);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:40px;width:100%;max-width:440px;box-shadow:0 40px 80px rgba(0,0,0,0.5);">
+            <div style="text-align:center;margin-bottom:28px;">
+                <div style="font-size:48px;margin-bottom:8px;">🎓</div>
+                <h2 style="margin:0;font-size:22px;font-weight:700;">EduPay</h2>
+                <p style="margin:4px 0 0;color:var(--text-muted,#888);font-size:14px;">School Fee Management System</p>
+            </div>
+
+            <!-- Tabs -->
+            <div
+                style="display:flex;gap:0;background:rgba(255,255,255,0.05);border-radius:10px;padding:4px;margin-bottom:24px;">
+                <button id="tab-login" onclick="switchAuthTab('login')" class="tab-active"
+                    style="flex:1;padding:10px;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;transition:all .2s;">Sign
+                    In</button>
+                <button id="tab-register" onclick="switchAuthTab('register')"
+                    style="flex:1;padding:10px;border:none;background:transparent;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text-muted,#888);transition:all .2s;">Register
+                    School</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div style="margin-bottom:16px;">
+                    <label style="display:block;margin-bottom:6px;font-size:13px;color:var(--text-muted,#888);">Admin
+                        Email</label>
+                    <input id="login-email" type="email" placeholder="admin@yourschool.edu" required
+                        style="width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;background:rgba(255,255,255,0.05);color:inherit;font-size:14px;box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:8px;">
+                    <label
+                        style="display:block;margin-bottom:6px;font-size:13px;color:var(--text-muted,#888);">Password</label>
+                    <input id="login-password" type="password" placeholder="••••••••" required
+                        style="width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;background:rgba(255,255,255,0.05);color:inherit;font-size:14px;box-sizing:border-box;">
+                </div>
+                <p id="login-error" style="color:#f87171;font-size:13px;margin:6px 0 12px;"></p>
+                <button type="submit"
+                    style="width:100%;padding:13px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;">Sign
+                    In →</button>
+                <p style="text-align:center;margin-top:14px;font-size:13px;color:var(--text-muted,#888);">Demo:
+                    <strong>admin@greenfield.edu</strong> / <strong>password123</strong>
+                </p>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" onsubmit="handleRegister(event)" style="display:none;">
+                <div style="margin-bottom:12px;">
+                    <label style="display:block;margin-bottom:5px;font-size:13px;color:var(--text-muted,#888);">School
+                        Name *</label>
+                    <input id="reg-school" type="text" placeholder="e.g. Greenfield Academy" required
+                        style="width:100%;padding:11px 14px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;background:rgba(255,255,255,0.05);color:inherit;font-size:14px;box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:12px;">
+                    <label style="display:block;margin-bottom:5px;font-size:13px;color:var(--text-muted,#888);">School
+                        Address</label>
+                    <input id="reg-address" type="text" placeholder="e.g. 123 Lekki Road, Lagos"
+                        style="width:100%;padding:11px 14px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;background:rgba(255,255,255,0.05);color:inherit;font-size:14px;box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:12px;">
+                    <label style="display:block;margin-bottom:5px;font-size:13px;color:var(--text-muted,#888);">School
+                        Email (unique)</label>
+                    <input id="reg-school-email" type="email" placeholder="office@yourschool.edu"
+                        style="width:100%;padding:11px 14px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;background:rgba(255,255,255,0.05);color:inherit;font-size:14px;box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:12px;">
+                    <label style="display:block;margin-bottom:5px;font-size:13px;color:var(--text-muted,#888);">Admin
+                        Email *</label>
+                    <input id="reg-email" type="email" placeholder="admin@yourschool.edu" required
+                        style="width:100%;padding:11px 14px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;background:rgba(255,255,255,0.05);color:inherit;font-size:14px;box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:8px;">
+                    <label style="display:block;margin-bottom:5px;font-size:13px;color:var(--text-muted,#888);">Password
+                        *</label>
+                    <input id="reg-password" type="password" placeholder="Min 6 characters" required
+                        style="width:100%;padding:11px 14px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;background:rgba(255,255,255,0.05);color:inherit;font-size:14px;box-sizing:border-box;">
+                </div>
+                <p id="reg-error" style="color:#f87171;font-size:13px;margin:6px 0 12px;"></p>
+                <button type="submit"
+                    style="width:100%;padding:13px;background:linear-gradient(135deg,#10b981,#3b82f6);border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;">Register
+                    School →</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        #tab-login.tab-active,
+        #tab-register.tab-active {
+            background: rgba(99, 102, 241, 0.35);
+            color: #fff;
+        }
+    </style>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
